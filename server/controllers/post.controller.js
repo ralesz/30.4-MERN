@@ -78,3 +78,32 @@ export function deletePost(req, res) {
     });
   });
 }
+
+export function editPost(req, res) {
+  Post.update({ cuid: req.params.cuid }, req.body.post).exec((err, post) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ post });
+  });
+}
+
+export function thumbUp(req, res) {
+  Post.findOneAndUpdate( { cuid: req.params.cuid }, { $inc: { voteCount: 1 } }, err => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.status(200).end();
+    }
+  );
+}
+
+export function thumbDown(req, res) {
+  Post.findOneAndUpdate( { cuid: req.params.cuid }, { $inc: { voteCount: -1 } }, err => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).end();
+  }
+);
+}
