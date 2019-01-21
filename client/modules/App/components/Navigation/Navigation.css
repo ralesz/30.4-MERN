@@ -1,0 +1,19 @@
+.nav-list {
+list-style: none;
+margin: auto;
+text-align: center;
+}
+.nav-title {
+display: inline-block;
+padding: 5px;
+cursor: pointer;
+margin: 20px
+}
+
+.nav-link {
+font-weight: 900;
+font-size: 26px;
+float: left;
+text-decoration: none;
+color: white;
+}
